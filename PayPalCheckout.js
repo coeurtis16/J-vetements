@@ -1,29 +1,27 @@
 import React from 'react';
-import { PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-function PayPalCheckout() {
+const PayPalCheckout = () => {
   return (
-    <div>
-      <h2>Payer avec PayPal</h2>
+    <PayPalScriptProvider options={{ "client-id": "VOTRE_CLIENT_ID_PAYPAL" }}>
       <PayPalButtons
-        style={{ layout: "vertical" }}
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: "20.00", // Remplacer par le montant réel
-              },
-            }],
+                value: "10.00" // Montant de l'achat
+              }
+            }]
           });
         }}
         onApprove={(data, actions) => {
           return actions.order.capture().then((details) => {
-            alert("Paiement effectué par " + details.payer.name.given_name);
+            alert("Transaction réussie par " + details.payer.name.given_name);
           });
         }}
       />
-    </div>
+    </PayPalScriptProvider>
   );
-}
+};
 
 export default PayPalCheckout;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PayPalCheckout from '../components/PayPalCheckout';
-import MobileMoneyCheckout from '../components/MobileMoneyCheckout';
+import MobileMoney from '../components/MobileMoney';
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <h1>Bienvenue sur J Vêtements</h1>
       <p>Boutique professionnelle et sobre de vêtements.</p>
       <PayPalCheckout />
-      <MobileMoneyCheckout />
+      <MobileMoney />
     </div>
   );
 };
